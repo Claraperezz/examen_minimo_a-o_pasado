@@ -14,7 +14,10 @@ if (isset($_REQUEST['btn_calcular']))
     $sexo= $_REQUEST['rb_sexo'];
     $nivel_actividad= $_REQUEST['cmb_actividad'];
 
-
+    if(($altura<151) || ($altura>200) || ($edad<21) || ($edad>70))
+    {
+        echo "datos incorrectos";
+    }
 
 if ($tipo_peso=="libras")
 {
@@ -22,12 +25,12 @@ if ($tipo_peso=="libras")
 }
 
 if ($sexo=="mujer"){
-    $TMB= 655 + (9.6 * $peso) + (1.8 * $altura) -(4.7 * $edad);
+    $TMB= 655 + (9.6 * $peso) + (1.8 * $altura) - (4.7 * $edad);
 }
-else {
-    $TMB= 66 + (13.7*$peso) + (5*$altura) -(6.8 * $edad);
+else { //hombre
+    $TMB= 66 + (13.7*$peso) + (5*$altura) - (6.8 * $edad);
 }
-
+    $calorias=$TMB*$nivel_actividad;
 }
 
 echo'  
@@ -81,8 +84,8 @@ echo'
                             <tr>
                                 <td align="right">Sexo :</td>
                                 <td>
-                                    <input type="radio"  name="rb_sexo"  checked="checked" value=""/>Hombre	
-                                    <input type="radio"  name="rb_sexo"  value=""/>Mujer
+                                    <input type="radio"  name="rb_sexo"  checked="checked" value="hombre"/>Hombre	
+                                    <input type="radio"  name="rb_sexo"  value="mujer"/>Mujer
                                     </td>
                              </tr>  
                             
