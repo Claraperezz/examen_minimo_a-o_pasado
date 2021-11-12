@@ -1,0 +1,1 @@
+# examen_minimo_a-o_pasado
